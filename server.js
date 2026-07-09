@@ -11,7 +11,10 @@ const app=express();
 const cors = require('cors')
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: [
+        'http://localhost:3000',
+        'https://vortex-frontend.vercel.app' // add your actual Vercel URL!!
+    ],
     credentials: true
 }))
 
