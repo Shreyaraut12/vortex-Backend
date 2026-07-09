@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const RepoModel=require('../models/repo.js');
+const RepoModel=require('../models/Repo.js');
 const authMiddleware=require('../middleware/auth.js');
 const branchModel=require('../models/branch.js');
 

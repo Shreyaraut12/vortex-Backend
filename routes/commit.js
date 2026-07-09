@@ -1,7 +1,7 @@
 const express=require('express');
 const router= express.Router();
 const commitModel=require('../models/commit.js');
-const repoModel=require('../models/repo.js');
+const repoModel=require('../models/Repo.js');
 const authMiddleware=require('../middleware/auth.js');
 const crypto=require('crypto');
 

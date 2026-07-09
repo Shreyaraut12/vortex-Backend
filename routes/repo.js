@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const repoModel=require('../models/repo.js');
+const repoModel=require('../models/Repo.js');
 const authMiddleware=require('../middleware/auth.js')
 
 // 1. Get repo name, description, visibility from req.body
