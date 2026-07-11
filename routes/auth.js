@@ -4,6 +4,8 @@ const router=express.Router();
 const User=require('../models/user.js');
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
+const authMiddleware = require('../middleware/auth.js')
+
 
 router.post('/signup',async(req,res)=>{
     try{
@@ -38,6 +40,21 @@ router.post('/signup',async(req,res)=>{
     }
     catch(err){
         res.status(500).json({message:err.message})
+    }
+})
+
+router.get('/stats', authMiddleware, async(req, res) => {
+    try {
+        const user = await User.findById(req.userId);
+        res.status(200).json({
+            username: user.username,
+            totalXP: user.totalXP,
+            streak: user.streak,
+            lastCommitDate: user.lastCommitDate,
+            badges: user.badges
+        })
+    } catch(err) {
+        res.status(500).json({ message: err.message })
     }
 })
 

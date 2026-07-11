@@ -31,6 +31,7 @@ app.use('/commits', commitRoutes);
 
 app.use('/branches', branchRoutes);
 app.use('/ai', aiRoutes)
+app.use('/auth', authRoutes)
 
 app.get("/",(req,res)=>{
     res.json({message:'vortex api running'});
