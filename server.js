@@ -9,6 +9,8 @@ const branchRoutes = require('./routes/branch')
 const aiRoutes = require('./routes/ai')
 const app=express();
 const cors = require('cors')
+const notFoundHandler = require('./middleware/notFoundHandler.js')
+const errorHandler = require('./middleware/errorHandler.js')
 
 app.use(cors({
     origin: [
@@ -36,6 +38,10 @@ app.use('/auth', authRoutes)
 app.get("/",(req,res)=>{
     res.json({message:'vortex api running'});
 });
+
+// must stay last: unmatched routes, then all errors
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const PORT = process.env.PORT||5000;
 app.listen(PORT,()=>{
